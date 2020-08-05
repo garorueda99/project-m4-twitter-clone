@@ -1,31 +1,45 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import GlobalStyles from "./GlobalStyles";
+import Bookmarks from "./Bookmarks";
+import HomeFeed from "./HomeFeed";
+import Notifications from "./Notifications";
+import Profile from "./Profile";
+import TweetDetails from "./TweetDetails";
+import Sidebar from "./Sidebar";
+import styled from "styled-components";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Wrapper>
-        <Header />
-        <Main>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/items/:itemId">
-              <ItemDetails />
-            </Route>
-          </Switch>
-        </Main>
-      </Wrapper>
-
-      <GlobalStyles />
-    </BrowserRouter>
+    <Main>
+      <Router>
+        <Sidebar />
+        <Switch>
+          <Route exact path="/">
+            <HomeFeed />
+          </Route>
+          <Route path="/bookmarks">
+            <Bookmarks />
+          </Route>
+          <Route path="/notifications">
+            <Notifications />
+          </Route>
+          <Route path="/tweet/:tweerId">
+            <TweetDetails />
+          </Route>
+          <Route path="/:profileId">
+            <Profile />
+          </Route>
+        </Switch>
+        <GlobalStyles />
+      </Router>
+    </Main>
   );
 }
 
 export default App;
+
+const Main = styled.main`
+  display: flex;
+`;
