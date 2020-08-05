@@ -6,6 +6,7 @@ import { FiHome } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { FiBell } from "react-icons/fi";
 import { FiBookmark } from "react-icons/fi";
+import { COLORS } from "../../theme";
 
 const Sidebar = () => {
   const iconStyle = { marginRight: "10px", width: "0.8rem" };
@@ -14,7 +15,7 @@ const Sidebar = () => {
       <Logo src={logo} alt="logo" />
       <ul>
         <Li>
-          <NavigationLink to="/">
+          <NavigationLink exact activeClassName="active " to="/">
             <FiHome style={iconStyle} />
             <h2>Home</h2>
           </NavigationLink>
@@ -26,7 +27,7 @@ const Sidebar = () => {
           </NavigationLink>
         </Li>
         <Li>
-          <NavigationLink to="/notification">
+          <NavigationLink to="/notifications">
             <FiBell style={iconStyle} />
             <h2>Notifications</h2>
           </NavigationLink>
@@ -64,4 +65,8 @@ const NavigationLink = styled(NavLink)`
   align-items: center;
   text-decoration: none;
   color: black;
+  outline: 0;
+  &.active {
+    color: ${COLORS.primary};
+  }
 `;
