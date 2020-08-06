@@ -6,12 +6,15 @@ const HomeFeed = () => {
   let tweetsToPost = [];
   if (currentHomeFeed.tweetIds !== undefined) {
     tweetsToPost = currentHomeFeed.tweetIds.map((id) => id);
-    tweetsToPost.map((id) => console.log(id));
   }
   return (
     <div>
       {tweetsToPost.map((id) => (
-        <div>{id}</div>
+        <div>
+          <span>{id}</span>
+          {currentHomeFeed.tweetsById[id].status}
+          <div>{currentHomeFeed.tweetsById[id].media.type}</div>
+        </div>
       ))}
     </div>
   );
