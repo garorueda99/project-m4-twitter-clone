@@ -1,14 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
-import GlobalStyles from "./GlobalStyles";
-import Bookmarks from "./Bookmarks";
-import HomeFeed from "./HomeFeed";
-import Notifications from "./Notifications";
-import Profile from "./Profile";
-import TweetDetails from "./TweetDetails";
-import Sidebar from "./Sidebar";
-import styled from "styled-components";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import GlobalStyles from './GlobalStyles';
+import Bookmarks from './Bookmarks';
+import HomeFeed from './HomeFeed';
+import Notifications from './Notifications';
+import Profile from './Profile';
+import TweetDetails from './TweetDetails';
+import Sidebar from './Sidebar';
+import styled from 'styled-components';
+import { HomeFeedProvider } from './HomeFeedContext';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Sidebar />
         <Switch>
           <Route exact path="/">
-            <HomeFeed />
+            <HomeFeedProvider>
+              <HomeFeed />
+            </HomeFeedProvider>
           </Route>
           <Route path="/bookmarks">
             <Bookmarks />
