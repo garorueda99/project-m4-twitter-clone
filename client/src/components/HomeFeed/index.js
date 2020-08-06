@@ -1,7 +1,11 @@
-import React from "react";
-
+import React from 'react';
+import { HomeFeedProvider } from '../HomeFeedContext';
 const HomeFeed = () => {
-  return <div>Home Feed</div>;
+  return (
+    <HomeFeedProvider>
+      <div>Home Feed</div>
+    </HomeFeedProvider>
+  );
 };
 
 export default HomeFeed;
