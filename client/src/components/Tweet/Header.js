@@ -23,6 +23,7 @@ const Wrapper = styled.header`
   display: flex;
   width: 100%;
   height: fit-content;
+  margin-bottom: 10px;
 `;
 
 const Avatar = styled.img`

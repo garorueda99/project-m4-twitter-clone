@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Header from './Header';
+import Tweet from '../Tweet';
 
 import { HomeFeedContext } from '../HomeFeedContext';
 
@@ -14,18 +14,13 @@ const HomeFeed = () => {
     <Wrapper>
       <h1>Home</h1>
       {tweetsToPost.map((id) => (
-        <div>
-          <Header
-            avatarSrc={currentHomeFeed.tweetsById[id].author.avatarSrc}
-            displayName={currentHomeFeed.tweetsById[id].author.displayName}
-            handle={currentHomeFeed.tweetsById[id].author.handle}
-            timestamp={currentHomeFeed.tweetsById[id].timestamp}
-            status={currentHomeFeed.tweetsById[id].status}
-          ></Header>
-          <span>{id}</span>
-          {/* {currentHomeFeed.tweetsById[id].status} */}
-          {/* <div>{currentHomeFeed.tweetsById[id].media.type}</div> */}
-        </div>
+        <Tweet
+          avatarSrc={currentHomeFeed.tweetsById[id].author.avatarSrc}
+          displayName={currentHomeFeed.tweetsById[id].author.displayName}
+          handle={currentHomeFeed.tweetsById[id].author.handle}
+          timestamp={currentHomeFeed.tweetsById[id].timestamp}
+          status={currentHomeFeed.tweetsById[id].status}
+        />
       ))}
     </Wrapper>
   );
