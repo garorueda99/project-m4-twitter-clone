@@ -20,6 +20,7 @@ const HomeFeed = () => {
           handle={currentHomeFeed.tweetsById[id].author.handle}
           timestamp={currentHomeFeed.tweetsById[id].timestamp}
           status={currentHomeFeed.tweetsById[id].status}
+          media={currentHomeFeed.tweetsById[id].media[0]}
         />
       ))}
     </Wrapper>

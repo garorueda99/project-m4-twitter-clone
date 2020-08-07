@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import ActionBar from './ActionBar';
+import Media from './Media';
 
 const Tweet = (props) => {
+  // console.log(props.media.url);
   return (
     <TweetWrapper>
       <Header
@@ -13,6 +15,7 @@ const Tweet = (props) => {
         timestamp={props.timestamp}
         status={props.status}
       />
+      {/* <Media xtype={props.media.type} xurl={props.media.url} /> */}
       <Divider />
       <ActionBar />
     </TweetWrapper>
