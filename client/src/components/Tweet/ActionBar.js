@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import LikeButton from '..LikeButton';
+import LikeButton from '../LikeButton';
 import Action from './Action';
 import TweetActionIcon from './TweetActionIcon';
 
@@ -31,7 +31,7 @@ const ActionBar = () => {
         //   // handleToggleLike
         // }
       >
-        {/* <LikeButton /> */}
+        <LikeButton />
       </Action>
       <Action color="rgb(27, 149, 224)" size={40}>
         <TweetActionIcon kind="share" />

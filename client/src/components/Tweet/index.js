@@ -5,7 +5,7 @@ import ActionBar from './ActionBar';
 
 const Tweet = (props) => {
   return (
-    <>
+    <TweetWrapper>
       <Header
         avatarSrc={props.avatarSrc}
         displayName={props.displayName}
@@ -15,9 +15,14 @@ const Tweet = (props) => {
       />
       <Divider />
       <ActionBar />
-    </>
+    </TweetWrapper>
   );
 };
+
+const TweetWrapper = styled.div`
+  border: 1px solid rgb(230, 236, 240);
+  padding: 10px;
+`;
 
 const Divider = styled.div`
   height: 1px;
