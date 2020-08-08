@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import HeaderDetail from './HeaderDetail';
 import Media from '../Media';
+import ActionBar from '../Tweet/ActionBar';
 import moment from 'moment';
 
 const TweetDetails = (props) => {
@@ -26,7 +27,8 @@ const TweetDetails = (props) => {
       <Status>{props.status}</Status>
       <Media type={'img'} url={props.avatarSrc} />
       <Timestamp>{date}</Timestamp>
-      {/* <ActionBar /> */}
+      <Divider />
+      <ActionBar />
     </TweetWrapper>
   );
 };
@@ -47,6 +49,7 @@ const Divider = styled.div`
 
 const Timestamp = styled.div`
   color: rgb(101, 119, 134);
+  padding: 15px 0;
   &::after {
     content: ' • Critter web app';
   }
