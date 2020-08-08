@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import ActionBar from './ActionBar';
-import Media from './Media';
+import Media from '../Media';
 
 const Tweet = (props) => {
   let type = undefined;

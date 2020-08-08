@@ -11,7 +11,7 @@ const HomeFeed = () => {
     tweetsToPost = currentHomeFeed.tweetIds.map((id) => id);
   }
   return (
-    <Wrapper>
+    <>
       <h1>Home</h1>
       {tweetsToPost.map((id, index) => (
         <Tweet
@@ -24,15 +24,8 @@ const HomeFeed = () => {
           media={currentHomeFeed.tweetsById[id].media[0]}
         />
       ))}
-    </Wrapper>
+    </>
   );
 };
-
-const Wrapper = styled.header`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-`;
 
 export default HomeFeed;

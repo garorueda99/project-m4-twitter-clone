@@ -17,25 +17,27 @@ function App() {
       <TweetScreen>
         <Router>
           <Sidebar />
-          <Switch>
-            <Route exact path="/">
-              <HomeFeedProvider>
-                <HomeFeed />
-              </HomeFeedProvider>
-            </Route>
-            <Route path="/bookmarks">
-              <Bookmarks />
-            </Route>
-            <Route path="/notifications">
-              <Notifications />
-            </Route>
-            <Route path="/tweet/:tweerId">
-              <TweetDetails />
-            </Route>
-            <Route path="/:profileId">
-              <Profile />
-            </Route>
-          </Switch>
+          <ContentWrapper>
+            <Switch>
+              <Route exact path="/">
+                <HomeFeedProvider>
+                  <HomeFeed />
+                </HomeFeedProvider>
+              </Route>
+              <Route path="/bookmarks">
+                <Bookmarks />
+              </Route>
+              <Route path="/notifications">
+                <Notifications />
+              </Route>
+              <Route path="/tweet/:tweerId">
+                <TweetDetails />
+              </Route>
+              <Route path="/:profileId">
+                <Profile />
+              </Route>
+            </Switch>
+          </ContentWrapper>
           <GlobalStyles />
         </Router>
       </TweetScreen>
@@ -52,5 +54,11 @@ const Main = styled.main`
 
 const TweetScreen = styled.main`
   display: flex;
-  max-width: 900px;
+  width: 900px;
+`;
+
+const ContentWrapper = styled.header`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
