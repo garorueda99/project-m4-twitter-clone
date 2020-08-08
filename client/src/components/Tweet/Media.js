@@ -1,22 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Media = ({ xtype, xurl }) => {
-  console.log(xtype, xurl);
-  return <Wrapper></Wrapper>;
+const Media = ({ type, url }) => {
+  console.log(!!type, url);
+  return <Wrapper>{!!type && <Image src={url} alt={type} />}</Wrapper>;
 };
 
-const Wrapper = styled.header`
+const Wrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
   height: fit-content;
   margin-bottom: 10px;
 `;
 
 const Image = styled.img`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  width: 600px;
+  border-radius: 5px;
 `;
 
 export default Media;

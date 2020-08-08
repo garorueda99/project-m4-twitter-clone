@@ -13,8 +13,9 @@ const HomeFeed = () => {
   return (
     <Wrapper>
       <h1>Home</h1>
-      {tweetsToPost.map((id) => (
+      {tweetsToPost.map((id, index) => (
         <Tweet
+          key={index}
           avatarSrc={currentHomeFeed.tweetsById[id].author.avatarSrc}
           displayName={currentHomeFeed.tweetsById[id].author.displayName}
           handle={currentHomeFeed.tweetsById[id].author.handle}

@@ -5,7 +5,12 @@ import ActionBar from './ActionBar';
 import Media from './Media';
 
 const Tweet = (props) => {
-  // console.log(props.media.url);
+  let type = undefined;
+  let url = undefined;
+  if (props.media !== undefined) {
+    type = props.media.type;
+    url = props.media.url;
+  }
   return (
     <TweetWrapper>
       <Header
@@ -15,7 +20,7 @@ const Tweet = (props) => {
         timestamp={props.timestamp}
         status={props.status}
       />
-      {/* <Media xtype={props.media.type} xurl={props.media.url} /> */}
+      <Media type={type} url={url} />
       <Divider />
       <ActionBar />
     </TweetWrapper>
