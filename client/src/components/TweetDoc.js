@@ -8,7 +8,7 @@ const TweetDoc = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const meowButtonRef = useRef();
   useEffect(() => {
-    if (numOfLetters <= 0) {
+    if (numOfLetters < 0 || numOfLetters === 280) {
       meowButtonRef.current.disabled = true;
       meowButtonRef.current.style.background = 'green';
     } else {

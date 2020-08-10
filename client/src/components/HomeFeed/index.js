@@ -23,6 +23,7 @@ const HomeFeed = () => {
           timestamp={currentHomeFeed.tweetsById[id].timestamp}
           status={currentHomeFeed.tweetsById[id].status}
           media={currentHomeFeed.tweetsById[id].media[0]}
+          retweetFrom={currentHomeFeed.tweetsById[id].retweetFrom}
         />
       ))}
     </>

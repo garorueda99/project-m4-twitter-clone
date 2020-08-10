@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import ActionBar from './ActionBar';
 import Media from '../Media';
+import Retweeted from './Retweeted';
 
 const Tweet = (props) => {
   let type = undefined;
@@ -11,8 +12,15 @@ const Tweet = (props) => {
     type = props.media.type;
     url = props.media.url;
   }
+
+  let retweetedFrom = undefined;
+  if (props.retweetFrom !== undefined) {
+    retweetedFrom = props.retweetFrom.displayName;
+  }
+  // console.log('props at tweet index', props.retweetFrom);
   return (
     <TweetWrapper>
+      <Retweeted from={retweetedFrom} />
       <Header
         avatarSrc={props.avatarSrc}
         displayName={props.displayName}
