@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import GlobalStyles from './GlobalStyles';
@@ -10,34 +10,40 @@ import TweetDetails from './TweetDetails';
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import { HomeFeedProvider } from './HomeFeedContext';
+import { CurrentUserContext } from './CurrentUserContext';
 
 function App() {
+  const { currentUser } = useContext(CurrentUserContext);
+  const flagLoading =
+    Object.keys(currentUser).length === 0 && currentUser.constructor === Object;
   return (
     <Main>
       <TweetScreen>
         <Router>
           <Sidebar />
-          <ContentWrapper>
-            <Switch>
-              <Route exact path="/">
-                <HomeFeedProvider>
-                  <HomeFeed />
-                </HomeFeedProvider>
-              </Route>
-              <Route path="/bookmarks">
-                <Bookmarks />
-              </Route>
-              <Route path="/notifications">
-                <Notifications />
-              </Route>
-              <Route path="/tweet/:tweerId">
-                <TweetDetails />
-              </Route>
-              <Route path="/:profileId">
-                <Profile />
-              </Route>
-            </Switch>
-          </ContentWrapper>
+          {!flagLoading && (
+            <ContentWrapper>
+              <Switch>
+                <Route exact path="/">
+                  <HomeFeedProvider>
+                    <HomeFeed />
+                  </HomeFeedProvider>
+                </Route>
+                <Route path="/bookmarks">
+                  <Bookmarks />
+                </Route>
+                <Route path="/notifications">
+                  <Notifications />
+                </Route>
+                <Route path="/tweet/:tweerId">
+                  <TweetDetails />
+                </Route>
+                <Route path="/:profileId">
+                  <Profile />
+                </Route>
+              </Switch>
+            </ContentWrapper>
+          )}
           <GlobalStyles />
         </Router>
       </TweetScreen>

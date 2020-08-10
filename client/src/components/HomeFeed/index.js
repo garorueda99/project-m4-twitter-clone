@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 import Tweet from '../Tweet';
+import TweetDoc from '../TweetDoc';
 
 import { HomeFeedContext } from '../HomeFeedContext';
 
@@ -13,6 +13,7 @@ const HomeFeed = () => {
   return (
     <>
       <h1>Home</h1>
+      <TweetDoc />
       {tweetsToPost.map((id, index) => (
         <Tweet
           key={index}
