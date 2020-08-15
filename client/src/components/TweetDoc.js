@@ -10,7 +10,7 @@ const TweetDoc = () => {
   useEffect(() => {
     if (numOfLetters < 0 || numOfLetters === 280) {
       meowButtonRef.current.disabled = true;
-      meowButtonRef.current.style.background = 'green';
+      meowButtonRef.current.style.background = COLORS.secondary;
     } else {
       meowButtonRef.current.disabled = false;
       meowButtonRef.current.style.background = COLORS.primary;
@@ -58,7 +58,7 @@ const Avatar = styled.img`
 const InfoBar = styled.div`
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: flex-end;
 `;
 
 const InputText = styled.textarea`

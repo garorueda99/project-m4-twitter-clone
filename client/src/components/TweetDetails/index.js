@@ -4,8 +4,13 @@ import HeaderDetail from './HeaderDetail';
 import Media from '../Media';
 import ActionBar from '../Tweet/ActionBar';
 import moment from 'moment';
+import { FiArrowLeft } from 'react-icons/fi';
+import { useParams } from 'react-router-dom';
 
 const TweetDetails = (props) => {
+  const { tweetId } = useParams();
+  const tweetInfo = fetchTweet(tweetId);
+  console.log(tweetInfo);
   props = {
     avatarSrc: '/assets/treasurymog-avatar.jpg',
     displayName: 'Andres',
@@ -14,9 +19,14 @@ const TweetDetails = (props) => {
     status: 'hi',
   };
   const date = moment(props.timestamp).format('h:mm A • MMM Do YYYY');
-  console.log('this is props', props);
+  const iconStyle = { marginRight: '10px' };
   return (
     <TweetWrapper>
+      <TopHeader>
+        <FiArrowLeft style={iconStyle} />
+        Meow
+      </TopHeader>
+      <Divider />
       <HeaderDetail
         avatarSrc={props.avatarSrc}
         displayName={props.displayName}
@@ -33,6 +43,29 @@ const TweetDetails = (props) => {
   );
 };
 
+const fetchTweet = async (tweetId) => {
+  try {
+    const data = await fetch(`/api/tweet/${tweetId}`);
+    const tweetInfo = await data.json();
+    return tweetInfo;
+  } catch (err) {
+    console.log('first attempt failed');
+    try {
+      const data = await fetch(`/api/tweet/${tweetId}`);
+      const tweetInfo = await data.json();
+      return tweetInfo;
+    } catch (err) {
+      console.log('Second attempt failed', err);
+      //Error handling here!
+    }
+  }
+};
+
+const TopHeader = styled.div`
+  font-size: 1.5rem;
+  font-weight: bolder;
+`;
+
 const TweetWrapper = styled.div`
   border: 1px solid rgb(230, 236, 240);
   padding: 10px;
@@ -45,6 +78,7 @@ const Status = styled.div`
 const Divider = styled.div`
   height: 1px;
   background: rgb(230, 236, 240);
+  margin: 10px 0;
 `;
 
 const Timestamp = styled.div`
@@ -54,4 +88,5 @@ const Timestamp = styled.div`
     content: ' • Critter web app';
   }
 `;
+
 export default TweetDetails;

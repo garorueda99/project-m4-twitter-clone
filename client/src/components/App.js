@@ -18,10 +18,10 @@ function App() {
     Object.keys(currentUser).length === 0 && currentUser.constructor === Object;
   return (
     <Main>
-      <TweetScreen>
-        <Router>
-          <Sidebar />
-          {!flagLoading && (
+      {!flagLoading && (
+        <TweetScreen>
+          <Router>
+            <Sidebar />
             <ContentWrapper>
               <Switch>
                 <Route exact path="/">
@@ -35,7 +35,7 @@ function App() {
                 <Route path="/notifications">
                   <Notifications />
                 </Route>
-                <Route path="/tweet/:tweerId">
+                <Route path="/tweet/:tweetId">
                   <TweetDetails />
                 </Route>
                 <Route path="/:profileId">
@@ -43,10 +43,10 @@ function App() {
                 </Route>
               </Switch>
             </ContentWrapper>
-          )}
-          <GlobalStyles />
-        </Router>
-      </TweetScreen>
+            <GlobalStyles />
+          </Router>
+        </TweetScreen>
+      )}
     </Main>
   );
 }

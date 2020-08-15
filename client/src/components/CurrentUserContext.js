@@ -11,11 +11,19 @@ export const CurrentUserProvider = ({ children }) => {
 
   const fetchItem = async () => {
     try {
-      const data = await fetch('api/me/profile');
+      const data = await fetch('/api/me/profile');
       const userInfo = await data.json();
       setCurrentUser(userInfo);
     } catch (err) {
-      //Error handling here!
+      console.log('first attempt failed');
+      try {
+        const data = await fetch('/api/me/profile');
+        const userInfo = await data.json();
+        setCurrentUser(userInfo);
+      } catch (err) {
+        console.log('Second attempt failed', err);
+        //Error handling here!
+      }
     }
   };
 
