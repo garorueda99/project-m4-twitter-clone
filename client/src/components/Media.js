@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Media = ({ type, url }) => {
-  return <>{!!type && <Image src={url} alt={type} />}</>;
+const Media = ({ url }) => {
+  return <>{!!url && <Image src={url} alt={'User Tweet Image'} />}</>;
 };
 
 const Image = styled.img`

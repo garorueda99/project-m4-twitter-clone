@@ -1,15 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.svg";
-import { FiHome } from "react-icons/fi";
-import { FiUser } from "react-icons/fi";
-import { FiBell } from "react-icons/fi";
-import { FiBookmark } from "react-icons/fi";
-import { COLORS } from "../../theme";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
+import { FiHome } from 'react-icons/fi';
+import { FiUser } from 'react-icons/fi';
+import { FiBell } from 'react-icons/fi';
+import { FiBookmark } from 'react-icons/fi';
+import { COLORS } from '../../theme';
+import { CurrentUserContext } from '../CurrentUserContext';
 
 const Sidebar = () => {
-  const iconStyle = { marginRight: "10px", width: "0.8rem" };
+  const { currentUser } = useContext(CurrentUserContext);
+  const iconStyle = { marginRight: '10px', width: '0.8rem' };
   return (
     <Nav>
       <Logo src={logo} alt="logo" />
@@ -21,7 +23,7 @@ const Sidebar = () => {
           </NavigationLink>
         </Li>
         <Li>
-          <NavigationLink to="/profile">
+          <NavigationLink to={`/${currentUser.profile.handle}`}>
             <FiUser style={iconStyle} />
             <h2>Profile</h2>
           </NavigationLink>

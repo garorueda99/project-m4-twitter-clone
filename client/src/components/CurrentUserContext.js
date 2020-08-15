@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 
 export const CurrentUserContext = createContext(null);
 
-export const CurrentUserProvider = ({ children }) => {
+export const CurrentUserProvider = ({ children, props }) => {
   useEffect(() => {
     fetchItem();
   }, []);

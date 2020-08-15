@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import HeaderDetail from './HeaderDetail';
 import Media from '../Media';
@@ -7,18 +7,22 @@ import moment from 'moment';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useParams } from 'react-router-dom';
 
-const TweetDetails = (props) => {
+const TweetDetails = () => {
   const { tweetId } = useParams();
-  const tweetInfo = fetchTweet(tweetId);
-  console.log(tweetInfo);
-  props = {
-    avatarSrc: '/assets/treasurymog-avatar.jpg',
-    displayName: 'Andres',
-    handle: 'garo99',
-    timestamp: new Date('2019-12-26T14:38:00+00:00'),
-    status: 'hi',
-  };
-  const date = moment(props.timestamp).format('h:mm A • MMM Do YYYY');
+
+  const [response, setResponse] = useState(undefined);
+  useEffect(() => {
+    fetchTweet(tweetId).then((tweet) => setResponse(tweet));
+  }, [tweetId]);
+
+  let date, mediaUrl;
+  if (!!response) {
+    date = moment(response.timestamp).format('h:mm A • MMM Do YYYY');
+    if (response.tweet.media.length > 0) {
+      mediaUrl = response.tweet.media[0].url;
+      console.log(mediaUrl);
+    }
+  }
   const iconStyle = { marginRight: '10px' };
   return (
     <TweetWrapper>
@@ -27,18 +31,23 @@ const TweetDetails = (props) => {
         Meow
       </TopHeader>
       <Divider />
-      <HeaderDetail
-        avatarSrc={props.avatarSrc}
-        displayName={props.displayName}
-        handle={props.handle}
-        timestamp={props.timestamp}
-        status={props.status}
-      />
-      <Status>{props.status}</Status>
-      <Media type={'img'} url={props.avatarSrc} />
-      <Timestamp>{date}</Timestamp>
-      <Divider />
-      <ActionBar />
+      {!!response && (
+        <>
+          <HeaderDetail
+            avatarSrc={response.tweet.author.avatarSrc}
+            displayName={response.tweet.author.displayName}
+            handle={response.tweet.author.handle}
+            timestamp={response.tweet.timestamp}
+            status={response.tweet.status}
+          />
+
+          <Status>{response.tweet.status}</Status>
+          <Media url={mediaUrl} />
+          <Timestamp>{date}</Timestamp>
+          <Divider />
+          <ActionBar />
+        </>
+      )}
     </TweetWrapper>
   );
 };
