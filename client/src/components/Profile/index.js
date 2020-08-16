@@ -25,8 +25,7 @@ const Profile = () => {
   }
   return (
     <>
-      Profile
-      {/* {!!profile && (
+      {!!profile && (
         <>
           <ProfileWrapper>
             <ProfileHero style={heroStyle}>
@@ -49,7 +48,7 @@ const Profile = () => {
               />
             ))}
         </>
-      )} */}
+      )}
     </>
   );
 };
