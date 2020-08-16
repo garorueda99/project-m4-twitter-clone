@@ -5,20 +5,21 @@ import ProfileInfo from './ProfileInfo';
 import HomeFeed from '../HomeFeed';
 
 const Profile = () => {
-  const { profileId } = useParams();
-  const [profile, setProfile] = useState(undefined);
+  // const { profileId } = useParams();
+  // const [profile, setProfile] = useState(undefined);
 
-  useEffect(() => {
-    fetchProfile(profileId).then((profile) => setProfile(profile));
-  }, []);
+  // useEffect(() => {
+  //   fetchProfile(profileId).then((profile) => setProfile(profile));
+  // }, []);
 
   let heroStyle;
-  if (!!profile) {
-    heroStyle = { backgroundImage: `url(${profile.bannerSrc})` };
-  }
+  // if (!!profile) {
+  //   heroStyle = { backgroundImage: `url(${profile.bannerSrc})` };
+  // }
   return (
     <>
-      {!!profile && (
+      Profile
+      {/* {!!profile && (
         <>
           <ProfileWrapper>
             <ProfileHero style={heroStyle}>
@@ -29,7 +30,7 @@ const Profile = () => {
           </ProfileWrapper>
           <HomeFeed />
         </>
-      )}
+      )} */}
     </>
   );
 };
