@@ -5,7 +5,6 @@ import ProfileInfo from './ProfileInfo';
 import Tweet from '../Tweet';
 
 const Profile = () => {
-<<<<<<< HEAD
   const { profileId } = useParams();
   const [profile, setProfile] = useState(undefined);
   const [tweetsToPost, setTweetsToPost] = useState([]);
@@ -24,19 +23,6 @@ const Profile = () => {
       !!tweetsToPost.tweetIds
     );
   }
-=======
-  // const { profileId } = useParams();
-  // const [profile, setProfile] = useState(undefined);
-
-  // useEffect(() => {
-  //   fetchProfile(profileId).then((profile) => setProfile(profile));
-  // }, []);
-
-  let heroStyle;
-  // if (!!profile) {
-  //   heroStyle = { backgroundImage: `url(${profile.bannerSrc})` };
-  // }
->>>>>>> c4abfbae721d9fc83bb8197bb24304e101b73c44
   return (
     <>
       Profile

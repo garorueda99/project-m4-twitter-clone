@@ -6,17 +6,11 @@ import { AiOutlineCalendar } from 'react-icons/ai';
 import moment from 'moment';
 
 const ProfileInfo = ({ data }) => {
-<<<<<<< HEAD
   const date = moment(data.joined).format('MMMM YYYY');
   const iconStyle = { marginLeft: '30px', marginRight: '5px' };
 
-=======
-  // const date = moment(data.joined).format('MMMM YYYY');
-  // const iconStyle = { marginLeft: '30px', marginRight: '5px' };
->>>>>>> c4abfbae721d9fc83bb8197bb24304e101b73c44
   return (
     <DataWrapper>
-      {/* <DisplayName>{data.displayName}</DisplayName>
       <DisplayHandle>{data.handle}</DisplayHandle>
       {data.isFollowingYou && <DisplayFollowsMe>Follows You</DisplayFollowsMe>}
       <DisplayBio>{data.bio}</DisplayBio>
@@ -25,11 +19,7 @@ const ProfileInfo = ({ data }) => {
         <AiOutlineCalendar style={iconStyle} />
         {`Joined: ${date}`}
       </DisplayLocationAndStartDate>
-<<<<<<< HEAD
       <WrapperFollowStatus>{`${data.numFollowing} Following ${data.numFollowers} Followers`}</WrapperFollowStatus>
-=======
-      <WrapperFollowStatus>{`${data.numFollowing}Following ${data.numFollowers} Followers`}</WrapperFollowStatus> */}
->>>>>>> c4abfbae721d9fc83bb8197bb24304e101b73c44
     </DataWrapper>
   );
 };
