@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileInfo from './ProfileInfo';
+import HomeFeed from '../HomeFeed';
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -10,6 +11,7 @@ const Profile = () => {
   useEffect(() => {
     fetchProfile(profileId).then((profile) => setProfile(profile));
   }, []);
+
   let heroStyle;
   if (!!profile) {
     heroStyle = { backgroundImage: `url(${profile.bannerSrc})` };
@@ -17,13 +19,16 @@ const Profile = () => {
   return (
     <>
       {!!profile && (
-        <ProfileWrapper>
-          <ProfileHero style={heroStyle}>
-            <AvatarImage src={profile.avatarSrc} />
-          </ProfileHero>
-          <InfoWrapper />
-          <ProfileInfo data={profile} />
-        </ProfileWrapper>
+        <>
+          <ProfileWrapper>
+            <ProfileHero style={heroStyle}>
+              <AvatarImage src={profile.avatarSrc} />
+            </ProfileHero>
+            <InfoWrapper />
+            <ProfileInfo data={profile} />
+          </ProfileWrapper>
+          <HomeFeed />
+        </>
       )}
     </>
   );

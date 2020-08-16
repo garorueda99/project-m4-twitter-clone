@@ -4,8 +4,10 @@ import { COLORS } from '../../theme';
 import { GrFormLocation } from 'react-icons/gr';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import moment from 'moment';
+// import
 const ProfileInfo = ({ data }) => {
   const date = moment(data.joined).format('MMMM YYYY');
+  const iconStyle = { marginLeft: '30px', marginRight: '5px' };
   return (
     <DataWrapper>
       <DisplayName>{data.displayName}</DisplayName>
@@ -13,10 +15,11 @@ const ProfileInfo = ({ data }) => {
       {data.isFollowingYou && <DisplayFollowsMe>Follows You</DisplayFollowsMe>}
       <DisplayBio>{data.bio}</DisplayBio>
       <DisplayLocationAndStartDate>
-        <GrFormLocation size={30} /> {' ' + data.location}
-        <AiOutlineCalendar />
-        Joined {'' + date}
+        <GrFormLocation size={30} /> {` ${data.location}`}
+        <AiOutlineCalendar style={iconStyle} />
+        {`Joined: ${date}`}
       </DisplayLocationAndStartDate>
+      <WrapperFollowStatus>{`${data.numFollowing}Following ${data.numFollowers} Followers`}</WrapperFollowStatus>
     </DataWrapper>
   );
 };
@@ -50,7 +53,13 @@ const DisplayBio = styled.div`
   margin: 10px 0;
 `;
 
-const DisplayLocationAndStartDate = styled.span`
+const DisplayLocationAndStartDate = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const WrapperFollowStatus = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
