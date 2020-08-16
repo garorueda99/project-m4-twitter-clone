@@ -9,6 +9,7 @@ const HomeFeed = () => {
   let tweetsToPost = [];
   if (currentHomeFeed.tweetIds !== undefined) {
     tweetsToPost = currentHomeFeed.tweetIds.map((id) => id);
+    // console.log(tweetsToPost, currentHomeFeed);
   }
   return (
     <>

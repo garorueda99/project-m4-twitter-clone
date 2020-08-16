@@ -2,19 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileInfo from './ProfileInfo';
-import HomeFeed from '../HomeFeed';
+import Tweet from '../Tweet';
 
 const Profile = () => {
   const { profileId } = useParams();
   const [profile, setProfile] = useState(undefined);
+  const [tweetsToPost, setTweetsToPost] = useState([]);
 
   useEffect(() => {
     fetchProfile(profileId).then((profile) => setProfile(profile));
+    fetchTweets(profileId).then((dataTweets) => setTweetsToPost(dataTweets));
   }, []);
 
   let heroStyle;
   if (!!profile) {
     heroStyle = { backgroundImage: `url(${profile.bannerSrc})` };
+    console.log(
+      tweetsToPost.length,
+      tweetsToPost.tweetIds,
+      !!tweetsToPost.tweetIds
+    );
   }
   return (
     <>
@@ -27,7 +34,19 @@ const Profile = () => {
             <InfoWrapper />
             <ProfileInfo data={profile} />
           </ProfileWrapper>
-          <HomeFeed />
+          {!!tweetsToPost.tweetIds &&
+            tweetsToPost.tweetIds.map((id, index) => (
+              <Tweet
+                key={index}
+                avatarSrc={tweetsToPost.tweetsById[id].author.avatarSrc}
+                displayName={tweetsToPost.tweetsById[id].author.displayName}
+                handle={tweetsToPost.tweetsById[id].author.handle}
+                timestamp={tweetsToPost.tweetsById[id].timestamp}
+                status={tweetsToPost.tweetsById[id].status}
+                media={tweetsToPost.tweetsById[id].media[0]}
+                retweetFrom={tweetsToPost.tweetsById[id].retweetFrom}
+              />
+            ))}
         </>
       )}
     </>
@@ -45,6 +64,24 @@ const fetchProfile = async (profileId) => {
       const data = await fetch(`/api/${profileId}/profile`);
       const { profile: profileInfo } = await data.json();
       return profileInfo;
+    } catch (err) {
+      console.log('Second attempt failed', err);
+      //Error handling here!
+    }
+  }
+};
+
+const fetchTweets = async (profileId) => {
+  try {
+    const data = await fetch(`/api/${profileId}/feed`);
+    const dataTweets = await data.json();
+    return dataTweets;
+  } catch (err) {
+    console.log('first attempt failed');
+    try {
+      const data = await fetch(`/api/${profileId}/feed`);
+      const dataTweets = await data.json();
+      return dataTweets;
     } catch (err) {
       console.log('Second attempt failed', err);
       //Error handling here!

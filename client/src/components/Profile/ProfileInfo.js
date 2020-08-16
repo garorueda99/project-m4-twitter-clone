@@ -4,10 +4,11 @@ import { COLORS } from '../../theme';
 import { GrFormLocation } from 'react-icons/gr';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import moment from 'moment';
-// import
+
 const ProfileInfo = ({ data }) => {
   const date = moment(data.joined).format('MMMM YYYY');
   const iconStyle = { marginLeft: '30px', marginRight: '5px' };
+
   return (
     <DataWrapper>
       <DisplayName>{data.displayName}</DisplayName>
@@ -19,7 +20,7 @@ const ProfileInfo = ({ data }) => {
         <AiOutlineCalendar style={iconStyle} />
         {`Joined: ${date}`}
       </DisplayLocationAndStartDate>
-      <WrapperFollowStatus>{`${data.numFollowing}Following ${data.numFollowers} Followers`}</WrapperFollowStatus>
+      <WrapperFollowStatus>{`${data.numFollowing} Following ${data.numFollowers} Followers`}</WrapperFollowStatus>
     </DataWrapper>
   );
 };
