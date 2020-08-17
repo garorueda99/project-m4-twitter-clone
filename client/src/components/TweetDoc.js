@@ -2,20 +2,22 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../theme';
 import { CurrentUserContext } from './CurrentUserContext';
+import { HomeFeedContext } from './HomeFeedContext';
 
 const TweetDoc = () => {
-  const [numOfLetters, setNumOfLetters] = useState(280);
+  const [status, setStatus] = useState('');
   const { currentUser } = useContext(CurrentUserContext);
+  const { currentHomeFeed, setCurrentHomeFeed } = useContext(HomeFeedContext);
   const meowButtonRef = useRef();
   useEffect(() => {
-    if (numOfLetters < 0 || numOfLetters === 280) {
+    if (status.length < 0 || status.length === 280) {
       meowButtonRef.current.disabled = true;
       meowButtonRef.current.style.background = COLORS.secondary;
     } else {
       meowButtonRef.current.disabled = false;
       meowButtonRef.current.style.background = COLORS.primary;
     }
-  }, [numOfLetters]);
+  }, [status]);
   return (
     <DocWrapper>
       <WritingField>
@@ -24,18 +26,82 @@ const TweetDoc = () => {
           name={'TweetText'}
           placeholder={'What is happening?'}
           onChange={(e) => {
-            setNumOfLetters(280 - e.target.value.length);
+            setStatus(e.target.value);
           }}
         ></InputText>
       </WritingField>
       <InfoBar>
-        <MeowCount>{numOfLetters}</MeowCount>
-        <MeowButton ref={meowButtonRef} onClick={() => console.log('click')}>
+        <MeowCount>{280 - status.length}</MeowCount>
+        <MeowButton
+          ref={meowButtonRef}
+          onClick={() =>
+            postStatus({ status: status }).then(({ tweet }) => {
+              // console.log('POSTED: ', tweet);
+              const newTweetIds = [tweet['id'], ...currentHomeFeed.tweetIds];
+              fetchTweet(tweet.id).then((data) => {
+                let newTweetsById = {};
+                newTweetsById[tweet.id] = data.tweet;
+                newTweetsById = {
+                  ...newTweetsById,
+                  // ...currentHomeFeed.tweetsById,
+                };
+                newTweetsById = {
+                  ...currentHomeFeed.tweetsById,
+                  ...newTweetsById,
+                };
+                const newResponse = {
+                  tweetsById: newTweetsById,
+                  tweetIds: newTweetIds,
+                };
+
+                setCurrentHomeFeed(newResponse);
+
+                // newResponse.tweetIds = newTweetIds;
+                // newResponse = { ...newResponse, ...newTweetsById };
+                // console.log(newResponse);
+                // setCurrentHomeFeed({
+                //   ...newTweetsById,
+                //   ...currentHomeFeed.tweetsById,
+                // });
+              });
+            })
+          }
+        >
           Meow
         </MeowButton>
       </InfoBar>
     </DocWrapper>
   );
+};
+
+const postStatus = async (status) => {
+  const response = await fetch('api/tweet', {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    headers: { 'Content-Type': 'application/json' },
+    redirect: 'follow',
+    body: JSON.stringify(status),
+  });
+  return response.json();
+};
+
+const fetchTweet = async (tweetId) => {
+  try {
+    const data = await fetch(`/api/tweet/${tweetId}`);
+    const tweetInfo = await data.json();
+    return tweetInfo;
+  } catch (err) {
+    console.log('first attempt failed');
+    try {
+      const data = await fetch(`/api/tweet/${tweetId}`);
+      const tweetInfo = await data.json();
+      return tweetInfo;
+    } catch (err) {
+      console.log('Second attempt failed', err);
+      //Error handling here!
+    }
+  }
 };
 
 const DocWrapper = styled.div`

@@ -101,7 +101,7 @@ router.put('/api/tweet/:tweetId/like', (req, res) => {
     tweet.likedBy.push(CURRENT_USER_HANDLE);
   } else {
     tweet.likedBy = data.tweets[req.params.tweetId].likedBy.filter(
-      handle => handle !== CURRENT_USER_HANDLE
+      (handle) => handle !== CURRENT_USER_HANDLE
     );
   }
 
@@ -147,11 +147,11 @@ router.put('/api/tweet/:tweetId/retweet', (req, res) => {
     data.tweets[retweet.id] = retweet;
   } else {
     tweet.retweetedBy = tweet.retweetedBy.filter(
-      handle => handle !== CURRENT_USER_HANDLE
+      (handle) => handle !== CURRENT_USER_HANDLE
     );
 
     // HACK: finding the retweet is so so so not scalable.
-    const retweet = Object.values(data.tweets).find(tweet => {
+    const retweet = Object.values(data.tweets).find((tweet) => {
       return (
         tweet.retweetOf === req.params.tweetId &&
         tweet.authorHandle === CURRENT_USER_HANDLE

@@ -23,6 +23,7 @@ export const HomeFeedProvider = ({ children }) => {
     <HomeFeedContext.Provider
       value={{
         currentHomeFeed,
+        setCurrentHomeFeed,
       }}
     >
       {children}

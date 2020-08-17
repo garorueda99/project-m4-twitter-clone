@@ -20,7 +20,7 @@ const TweetDetails = () => {
     date = moment(response.timestamp).format('h:mm A • MMM Do YYYY');
     if (response.tweet.media.length > 0) {
       mediaUrl = response.tweet.media[0].url;
-      console.log(mediaUrl);
+      // console.log(mediaUrl);
     }
   }
   const iconStyle = { marginRight: '10px' };
