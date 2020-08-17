@@ -1,15 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import { useHistory } from 'react-router-dom';
 
 const Header = ({ avatarSrc, displayName, handle, timestamp, status }) => {
   const date = moment(timestamp).format('MMM Do');
+  const history = useHistory();
   return (
     <Wrapper>
       <Avatar src={avatarSrc} />
       <WrapperContent>
         <FirstLine>
-          <DisplayName>{displayName}</DisplayName>
+          <DisplayName
+          // onClick={() => {
+          //   history.push(`/${handle}`);
+          // }}
+          >
+            {displayName}
+          </DisplayName>
           <Username>@{handle}</Username>
           <Timestamp>{date}</Timestamp>
         </FirstLine>

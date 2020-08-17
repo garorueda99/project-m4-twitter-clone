@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import { useHistory } from 'react-router-dom';
 
 const HeaderDetail = ({
   avatarSrc,
@@ -10,11 +11,18 @@ const HeaderDetail = ({
   status,
 }) => {
   const date = moment(timestamp).format('MMM Do');
+  const history = useHistory();
   return (
     <Wrapper>
       <Avatar src={avatarSrc} />
       <WrapperContent>
-        <DisplayName>{displayName}</DisplayName>
+        <DisplayName
+          onClick={() => {
+            history.push(`/${handle}`);
+          }}
+        >
+          {displayName}
+        </DisplayName>
         <Username>@{handle}</Username>
       </WrapperContent>
     </Wrapper>
