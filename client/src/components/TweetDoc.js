@@ -73,7 +73,7 @@ const MeowButton = styled.button`
   font-size: 0.9rem;
   display: flex;
   justify-content: center;
-  padding: 12px 0;
+  padding: 10px 0;
   appearance: none;
   background: ${COLORS.primary};
   border: none;
@@ -86,6 +86,7 @@ const MeowButton = styled.button`
   box-shadow: 0 0 1em rgba(white, 0.2);
   outline: none;
   width: 100px;
+  font-weight: bolder;
 `;
 
 const MeowCount = styled.div`

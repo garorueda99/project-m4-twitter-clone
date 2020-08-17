@@ -41,6 +41,7 @@ const Sidebar = () => {
           </NavigationLink>
         </Li>
       </ul>
+      <MeowButton>Meow</MeowButton>
     </Nav>
   );
 };
@@ -71,4 +72,24 @@ const NavigationLink = styled(NavLink)`
   &.active {
     color: ${COLORS.primary};
   }
+`;
+
+const MeowButton = styled.button`
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  appearance: none;
+  background: ${COLORS.primary};
+  border: none;
+  color: white;
+  border-radius: 2em;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0 0 1em rgba(white, 0.2);
+  outline: none;
+  font-weight: bolder;
+  width: 90%;
 `;
