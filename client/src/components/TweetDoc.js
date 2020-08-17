@@ -19,13 +19,22 @@ const TweetDoc = () => {
     } else {
       meowButtonRef.current.disabled = false;
       meowButtonRef.current.style.background = COLORS.primary;
-      console.log(typeof status.length);
-      switch (status.length) {
-        case 225:
-          console.log("I'm here");
-          countScreen.current.style.color = 'yellow';
-          break;
-      }
+    }
+    switch (true) {
+      case status.length > 280:
+        countScreen.current.style.color = 'red';
+        break;
+      case status.length > 225:
+        countScreen.current.style.color = 'yellow';
+        countScreen.current.style.backgroundColor = COLORS.secondary;
+        countScreen.current.style.padding = '5px 6px';
+        countScreen.current.style.borderRadius = '15px';
+        break;
+      default:
+        countScreen.current.style.color = 'black';
+        countScreen.current.style.backgroundColor = 'transparent';
+        countScreen.current.style.padding = '5px 6px';
+        countScreen.current.style.borderRadius = '15px';
     }
   }, [status]);
   return (
@@ -53,8 +62,8 @@ const TweetDoc = () => {
                 let newTweetsById = {};
                 newTweetsById[tweet.id] = data.tweet;
                 newTweetsById = {
-                  ...currentHomeFeed.tweetsById,
                   ...newTweetsById,
+                  ...currentHomeFeed.tweetsById,
                 };
                 const newResponse = {
                   tweetsById: newTweetsById,
