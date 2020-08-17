@@ -34,6 +34,7 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets }) => {
         }}
       >
         <LikeButton isLiked={isLikedScreen} />
+        <LikesCount>{numOfLikes > 0 && numOfLikes}</LikesCount>
       </Action>
       <Action color="rgb(27, 149, 224)" size={40}>
         <TweetActionIcon kind="share" />
@@ -47,6 +48,12 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 48px;
+`;
+
+const LikesCount = styled.div`
+  position: absolute;
+  font-weight: bolder;
+  left: 40px;
 `;
 
 export default ActionBar;

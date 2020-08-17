@@ -4,6 +4,7 @@ import Header from './Header';
 import ActionBar from './ActionBar';
 import Media from '../Media';
 import Retweeted from './Retweeted';
+import { useHistory } from 'react-router-dom';
 
 const Tweet = (props) => {
   let type = undefined;
@@ -18,17 +19,24 @@ const Tweet = (props) => {
     retweetedFrom = props.retweetFrom.displayName;
   }
   // console.log('props at tweet index liked', props.isLiked, props);
+  const history = useHistory();
   return (
     <TweetWrapper>
-      <Retweeted from={retweetedFrom} />
-      <Header
-        avatarSrc={props.avatarSrc}
-        displayName={props.displayName}
-        handle={props.handle}
-        timestamp={props.timestamp}
-        status={props.status}
-      />
-      <Media type={type} url={url} />
+      <div
+        onClick={() => {
+          history.push(`/tweet/${props.id}`);
+        }}
+      >
+        <Retweeted from={retweetedFrom} />
+        <Header
+          avatarSrc={props.avatarSrc}
+          displayName={props.displayName}
+          handle={props.handle}
+          timestamp={props.timestamp}
+          status={props.status}
+        />
+        <Media type={type} url={url} />
+      </div>
       <Divider />
       <ActionBar
         isLiked={props.isLiked}
