@@ -21,7 +21,7 @@ const Tweet = (props) => {
   // console.log('props at tweet index liked', props.isLiked, props);
   const history = useHistory();
   return (
-    <TweetWrapper>
+    <TweetWrapper tabIndex="0">
       <div
         onClick={() => {
           history.push(`/tweet/${props.id}`);
@@ -51,6 +51,9 @@ const Tweet = (props) => {
 const TweetWrapper = styled.div`
   border: 1px solid rgb(230, 236, 240);
   padding: 10px;
+  :focus {
+    outline: #4caf50 solid 2px;
+  }
 `;
 
 const Divider = styled.div`
