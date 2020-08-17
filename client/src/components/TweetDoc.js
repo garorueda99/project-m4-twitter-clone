@@ -9,6 +9,9 @@ const TweetDoc = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { currentHomeFeed, setCurrentHomeFeed } = useContext(HomeFeedContext);
   const meowButtonRef = useRef();
+  const textScreen = useRef();
+  const countScreen = useRef();
+
   useEffect(() => {
     if (status.length < 0 || status.length === 280) {
       meowButtonRef.current.disabled = true;
@@ -16,6 +19,13 @@ const TweetDoc = () => {
     } else {
       meowButtonRef.current.disabled = false;
       meowButtonRef.current.style.background = COLORS.primary;
+      console.log(typeof status.length);
+      switch (status.length) {
+        case 225:
+          console.log("I'm here");
+          countScreen.current.style.color = 'yellow';
+          break;
+      }
     }
   }, [status]);
   return (
@@ -23,6 +33,7 @@ const TweetDoc = () => {
       <WritingField>
         <Avatar src={currentUser.profile.avatarSrc} />
         <InputText
+          ref={textScreen}
           name={'TweetText'}
           placeholder={'What is happening?'}
           onChange={(e) => {
@@ -31,7 +42,7 @@ const TweetDoc = () => {
         ></InputText>
       </WritingField>
       <InfoBar>
-        <MeowCount>{280 - status.length}</MeowCount>
+        <MeowCount ref={countScreen}>{280 - status.length}</MeowCount>
         <MeowButton
           ref={meowButtonRef}
           onClick={() =>
@@ -42,10 +53,6 @@ const TweetDoc = () => {
                 let newTweetsById = {};
                 newTweetsById[tweet.id] = data.tweet;
                 newTweetsById = {
-                  ...newTweetsById,
-                  // ...currentHomeFeed.tweetsById,
-                };
-                newTweetsById = {
                   ...currentHomeFeed.tweetsById,
                   ...newTweetsById,
                 };
@@ -54,6 +61,7 @@ const TweetDoc = () => {
                   tweetIds: newTweetIds,
                 };
 
+                textScreen.current.value = '';
                 setCurrentHomeFeed(newResponse);
 
                 // newResponse.tweetIds = newTweetIds;
