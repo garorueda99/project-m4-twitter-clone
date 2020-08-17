@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import LikeButton from '../LikeButton';
 import Action from './Action';
 import TweetActionIcon from './TweetActionIcon';
 
-// import { TweetContext } from "../TweetContext";
-
-const ActionBar = () => {
-  // const { handleToggleLike, handleToggleRetweet } = useContext(TweetContext);
+const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets }) => {
+  const [isLikedScreen, setIsLikedScreen] = useState(isLiked);
+  const [numOfLikes, setNumOfLikes] = useState(numLikes);
 
   return (
     <Wrapper>
@@ -27,11 +26,14 @@ const ActionBar = () => {
       <Action
         color="rgb(224, 36, 94)"
         size={40}
-        // onClick={
-        //   // handleToggleLike
-        // }
+        onClick={() => {
+          setIsLikedScreen(!isLikedScreen);
+          isLikedScreen
+            ? setNumOfLikes((n) => n - 1)
+            : setNumOfLikes((n) => n + 1);
+        }}
       >
-        <LikeButton />
+        <LikeButton isLiked={isLikedScreen} />
       </Action>
       <Action color="rgb(27, 149, 224)" size={40}>
         <TweetActionIcon kind="share" />

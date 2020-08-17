@@ -17,11 +17,6 @@ const Profile = () => {
   let heroStyle;
   if (!!profile) {
     heroStyle = { backgroundImage: `url(${profile.bannerSrc})` };
-    console.log(
-      tweetsToPost.length,
-      tweetsToPost.tweetIds,
-      !!tweetsToPost.tweetIds
-    );
   }
   return (
     <>

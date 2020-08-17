@@ -1,51 +1,28 @@
-import React from "react";
-import { useSpring, animated } from "react-spring";
+import React from 'react';
+import { useSpring, animated } from 'react-spring';
 
-import { sample } from "../../utils";
+const Particle = ({ children, angle, distance }) => {
+  const angleInRads = (angle) => (angle * Math.PI) / 180;
+  const x = Math.cos(angleInRads(angle)) * distance;
+  const y = Math.sin(angleInRads(angle)) * distance;
 
-// This helper function can convert your angle to radians, which is the format
-// that Math.sin and Math.cos expect.
-const convertDegreesToRadians = (angle) => (angle * Math.PI) / 180;
-
-const Particle = ({ angle, startDistance, endDistance, children }) => {
-  const angleInRads = convertDegreesToRadians(angle);
-
-  const delay = React.useRef(sample([0, 200]));
-
-  const startX = Math.cos(angleInRads) * startDistance;
-  const startY = Math.sin(angleInRads) * startDistance;
-
-  const endX = Math.cos(angleInRads) * endDistance;
-  const endY = Math.sin(angleInRads) * endDistance;
-
-  const positionSpring = useSpring({
-    transform: `translate(${endX}px, ${endY}px) scale(0)`,
+  const spring = useSpring({
+    zIndex: -1,
     from: {
-      transform: `translate(${startX}px, ${startY}px) scale(1)`,
+      transform: `translate(0px, 0px)`,
     },
-    delay: delay.current,
-    config: {
-      tension: 120,
-      friction: 30,
+    to: {
+      transform: `translate(${x}px, ${y}px)`,
     },
-  });
-
-  const opacitySpring = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
     config: {
-      tension: 140,
-      friction: 20,
+      mass: 2,
+      tension: 150,
+      friction: 8.5,
     },
   });
 
   return (
-    <animated.div
-      style={{
-        ...opacitySpring,
-        ...positionSpring,
-      }}
-    >
+    <animated.div style={{ ...spring, display: 'block' }}>
       {children}
     </animated.div>
   );

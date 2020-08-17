@@ -25,6 +25,10 @@ const HomeFeed = () => {
           status={currentHomeFeed.tweetsById[id].status}
           media={currentHomeFeed.tweetsById[id].media[0]}
           retweetFrom={currentHomeFeed.tweetsById[id].retweetFrom}
+          isLiked={currentHomeFeed.tweetsById[id].isLiked}
+          isRetweeted={currentHomeFeed.tweetsById[id].isRetweeted}
+          numLikes={currentHomeFeed.tweetsById[id].numLikes}
+          numRetweets={currentHomeFeed.tweetsById[id].numRetweets}
         />
       ))}
     </>

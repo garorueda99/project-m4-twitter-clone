@@ -17,7 +17,7 @@ const Tweet = (props) => {
   if (props.retweetFrom !== undefined) {
     retweetedFrom = props.retweetFrom.displayName;
   }
-  // console.log('props at tweet index', props.retweetFrom);
+  // console.log('props at tweet index liked', props.isLiked, props);
   return (
     <TweetWrapper>
       <Retweeted from={retweetedFrom} />
@@ -30,7 +30,12 @@ const Tweet = (props) => {
       />
       <Media type={type} url={url} />
       <Divider />
-      <ActionBar />
+      <ActionBar
+        isLiked={props.isLiked}
+        isReetweeted={props.isReetweeted}
+        numLikes={props.numLikes}
+        numRetweets={props.numRetweets}
+      />
     </TweetWrapper>
   );
 };

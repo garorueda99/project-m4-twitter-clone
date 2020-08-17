@@ -1,70 +1,48 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import styled, { keyframes } from "styled-components";
-
-import Particle from "./Particle";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import Particle from './Particle';
 
 const ConfettiPiece = ({ angle, distance, color }) => {
-  const size = 10;
+  const size = Math.floor(Math.random() * 12);
 
+  const Circle = styled.div`
+    width: ${size}px;
+    height: ${size}px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: ${fadeOut} 650ms ease-out;
+  `;
   return (
-    <CenteredWithinParent>
-      <Particle
-        angle={angle}
-        startDistance={distance * 0.55}
-        endDistance={distance}
-      >
+    <CenteredInsideParent>
+      <Particle angle={angle} distance={Math.floor(Math.random() * distance)}>
         <Circle
           style={{
-            width: size,
-            height: size,
-            background: color,
+            backgroundColor: color[Math.floor(Math.random() * color.length)],
           }}
         />
       </Particle>
-    </CenteredWithinParent>
+    </CenteredInsideParent>
   );
 };
 
-const warmKeyframe = keyframes`
-  0% { background: pink; }
-  50% { background: yellow; }
-  100% { background: pink; }
-`;
-const midKeyframe = keyframes`
-  0% { background: blue; }
-  50% { background: hotpink; }
-  100% { background: blue; }
-`;
-const coolKeyframe = keyframes`
-  0% { background: turquoise; }
-  50% { background: violet; }
-  100% { background: turquoise; }
-`;
-
-const getKeyframeForId = (id) => {
-  switch (id) {
-    case "warm":
-      return warmKeyframe;
-    case "mid":
-      return midKeyframe;
-    case "cool":
-      return coolKeyframe;
-    default:
-    // Do nothing
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
   }
-};
+  to {
+    opacity: 0;
+  }
+`;
 
-const CenteredWithinParent = styled.div`
+const CenteredInsideParent = styled.div`
+  z-index: 10;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`;
-
-const Circle = styled.div`
-  border-radius: 50%;
-  animation: ${(props) => getKeyframeForId(props.keyframeId)} 1000ms infinite;
 `;
 
 export default ConfettiPiece;
