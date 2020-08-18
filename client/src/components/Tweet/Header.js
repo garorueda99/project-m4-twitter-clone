@@ -79,8 +79,8 @@ const Timestamp = styled.div`
 
 const Status = styled.div`
   max-width: 600px;
-  text-align: justify;
-  text-justify: inter-word;
+  /* text-align: justify; */
+  /* text-justify: inter-word; */
   word-wrap: break-word;
 `;
 

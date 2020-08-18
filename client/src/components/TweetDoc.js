@@ -13,13 +13,14 @@ const TweetDoc = () => {
   const countScreen = useRef();
 
   useEffect(() => {
-    if (status.length < 0 || status.length === 280) {
+    if (status.length < 0 || status.length > 280) {
       meowButtonRef.current.disabled = true;
       meowButtonRef.current.style.background = COLORS.secondary;
     } else {
       meowButtonRef.current.disabled = false;
       meowButtonRef.current.style.background = COLORS.primary;
     }
+
     switch (true) {
       case status.length > 280:
         countScreen.current.style.color = 'red';
