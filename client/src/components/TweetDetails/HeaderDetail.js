@@ -3,13 +3,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 
-const HeaderDetail = ({
-  avatarSrc,
-  displayName,
-  handle,
-  timestamp,
-  status,
-}) => {
+const HeaderDetail = ({ avatarSrc, displayName, handle, timestamp }) => {
   const date = moment(timestamp).format('MMM Do');
   const history = useHistory();
   return (

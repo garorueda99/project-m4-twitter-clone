@@ -7,6 +7,7 @@ const Spinner = ({ size }) => {
   return (
     <Wrapper>
       <SpinImg size={size} />
+      <div> LOADING...</div>
     </Wrapper>
   );
 };

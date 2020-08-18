@@ -38,14 +38,18 @@ const TweetDetails = () => {
             displayName={response.tweet.author.displayName}
             handle={response.tweet.author.handle}
             timestamp={response.tweet.timestamp}
-            status={response.tweet.status}
           />
 
           <Status>{response.tweet.status}</Status>
           <Media url={mediaUrl} />
           <Timestamp>{date}</Timestamp>
           <Divider />
-          <ActionBar />
+          <ActionBar
+            isLiked={response.tweet.isLiked}
+            isReetweeted={response.tweet.isReetweeted}
+            numLikes={response.tweet.numLikes}
+            numRetweets={response.tweet.numRetweets}
+          />
         </>
       )}
     </TweetWrapper>
@@ -82,6 +86,10 @@ const TweetWrapper = styled.div`
 
 const Status = styled.div`
   font-size: 2rem;
+  max-width: 600px;
+  /* text-align: justify; */
+  /* text-justify: inter-word; */
+  word-wrap: break-word;
 `;
 
 const Divider = styled.div`

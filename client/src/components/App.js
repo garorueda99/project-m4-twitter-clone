@@ -11,6 +11,7 @@ import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import { HomeFeedProvider } from './HomeFeedContext';
 import { CurrentUserContext } from './CurrentUserContext';
+import Spinner from './Spinner';
 
 function App() {
   const { currentUser } = useContext(CurrentUserContext);
@@ -18,7 +19,7 @@ function App() {
     Object.keys(currentUser).length === 0 && currentUser.constructor === Object;
   return (
     <Main>
-      {!flagLoading && (
+      {!flagLoading ? (
         <TweetScreen>
           <Router>
             <Sidebar />
@@ -46,6 +47,8 @@ function App() {
             <GlobalStyles />
           </Router>
         </TweetScreen>
+      ) : (
+        <Spinner size="50" />
       )}
     </Main>
   );

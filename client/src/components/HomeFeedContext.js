@@ -14,8 +14,17 @@ export const HomeFeedProvider = ({ children }) => {
       const data = await fetch('/api/me/home-feed');
       const userHomeFeed = await data.json();
       setCurrentHomeFeed(userHomeFeed);
+      console.log('First Attempt to fetch Feed Context');
     } catch (err) {
       //Error handling here!
+      try {
+        const data = await fetch('/api/me/home-feed');
+        const userHomeFeed = await data.json();
+        setCurrentHomeFeed(userHomeFeed);
+        console.log('Second Attempt to fetch Feed Context');
+      } catch (err) {
+        //Error handling here!
+      }
     }
   };
 
