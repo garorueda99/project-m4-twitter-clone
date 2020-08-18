@@ -12,9 +12,11 @@ const Header = ({ avatarSrc, displayName, handle, timestamp, status }) => {
       <WrapperContent>
         <FirstLine>
           <DisplayName
-          // onClick={() => {
-          //   history.push(`/${handle}`);
-          // }}
+            tabIndex="0"
+            onClick={(e) => {
+              history.push(`/${handle}`);
+              e.stopPropagation();
+            }}
           >
             {displayName}
           </DisplayName>
@@ -57,6 +59,9 @@ const DisplayName = styled.div`
   line-height: 20px;
   font-weight: bold;
   margin-right: 5px;
+  &:focus {
+    outline: #4caf50 solid 2px;
+  }
 `;
 
 const Username = styled.div`
