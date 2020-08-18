@@ -125,6 +125,7 @@ const DocWrapper = styled.div`
   border: 1px solid ${COLORS.line};
   height: 280px;
   padding: 10px;
+  border-bottom: 4px solid ${COLORS.line};
 `;
 
 const WritingField = styled.div`
