@@ -23,7 +23,7 @@ const Header = ({ avatarSrc, displayName, handle, timestamp, status }) => {
           <Username>@{handle}</Username>
           <Timestamp>{date}</Timestamp>
         </FirstLine>
-        <div>{status}</div>
+        <Status>{status}</Status>
       </WrapperContent>
     </Wrapper>
   );
@@ -31,7 +31,7 @@ const Header = ({ avatarSrc, displayName, handle, timestamp, status }) => {
 
 const Wrapper = styled.header`
   display: flex;
-  width: 100%;
+  max-width: 600px;
   height: fit-content;
   margin-bottom: 10px;
 `;
@@ -75,6 +75,13 @@ const Timestamp = styled.div`
     content: '•';
     margin: 0 5px;
   }
+`;
+
+const Status = styled.div`
+  max-width: 600px;
+  text-align: justify;
+  text-justify: inter-word;
+  word-wrap: break-word;
 `;
 
 export default Header;
