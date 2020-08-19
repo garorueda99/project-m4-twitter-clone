@@ -2,22 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { COLORS } from '../../theme';
-const TweetHorizontalBar = () => {
+const TweetHorizontalBar = ({ handle }) => {
   return (
     <Nav>
       <Ul>
         <Li tabIndex="0">
-          <NavigationLink exact activeClassName="active " to="#">
+          <NavigationLink exact activeClassName="active " to={`/${handle}`}>
             <H2>Tweets</H2>
           </NavigationLink>
         </Li>
         <Li tabIndex="0">
-          <NavigationLink to={`/Media`}>
+          <NavigationLink exact to={`/Media`}>
             <H2>Media</H2>
           </NavigationLink>
         </Li>
         <Li tabIndex="0">
-          <NavigationLink to="/likes">
+          <NavigationLink exact to="/likes">
             <H2>Likes</H2>
           </NavigationLink>
         </Li>
@@ -29,6 +29,7 @@ const TweetHorizontalBar = () => {
 export default TweetHorizontalBar;
 
 const Nav = styled.main`
+  right: 10px;
   margin-top: 20px;
 `;
 
@@ -54,7 +55,7 @@ const NavigationLink = styled(NavLink)`
   outline: 0;
   padding-bottom: 12px;
   border-bottom: 1px solid ${COLORS.secondary};
-  }
+
   &.active {
     color: ${COLORS.primary};
     border-bottom: 1px solid ${COLORS.primary};

@@ -31,7 +31,7 @@ const Profile = () => {
             <InfoWrapper />
             <ProfileInfo data={profile} />
           </ProfileWrapper>
-          <TweetHorizontalBar />
+          <TweetHorizontalBar handle={profileId} />
           <Switch>
             <Route path="/">
               {!!tweetsToPost.tweetIds &&
