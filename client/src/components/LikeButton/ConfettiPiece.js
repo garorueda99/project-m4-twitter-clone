@@ -10,7 +10,7 @@ const fadeOut = keyframes`
     }
   `;
 
-let size = Math.floor(Math.random() * 12);
+const size = () => Math.floor(Math.random() * 12);
 
 const ConfettiPiece = ({ angle, distance, color }) => {
   return (
