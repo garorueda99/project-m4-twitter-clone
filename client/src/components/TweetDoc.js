@@ -38,6 +38,7 @@ const TweetDoc = () => {
         countScreen.current.style.borderRadius = '15px';
     }
   }, [status]);
+
   return (
     <DocWrapper>
       <WritingField>

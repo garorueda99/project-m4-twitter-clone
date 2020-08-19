@@ -33,6 +33,7 @@ const Profile = () => {
             tweetsToPost.tweetIds.map((id, index) => (
               <Tweet
                 key={index}
+                id={tweetsToPost.tweetsById[id].id}
                 avatarSrc={tweetsToPost.tweetsById[id].author.avatarSrc}
                 displayName={tweetsToPost.tweetsById[id].author.displayName}
                 handle={tweetsToPost.tweetsById[id].author.handle}

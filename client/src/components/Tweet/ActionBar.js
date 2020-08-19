@@ -31,7 +31,7 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
           isLikedScreen
             ? setNumOfLikes((n) => n - 1)
             : setNumOfLikes((n) => n + 1);
-          console.log('===>', isLiked, isLikedScreen);
+          console.log('===>', isLiked, !isLikedScreen, 'ID', id);
           putTweet(id, !isLikedScreen).then((res) => console.log(res));
         }}
       >
