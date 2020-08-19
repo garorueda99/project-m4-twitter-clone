@@ -39,6 +39,7 @@ const Tweet = (props) => {
       </div>
       <Divider />
       <ActionBar
+        id={props.id}
         isLiked={props.isLiked}
         isReetweeted={props.isReetweeted}
         numLikes={props.numLikes}

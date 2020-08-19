@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import LikeButton from '../LikeButton';
 import Action from './Action';
 import TweetActionIcon from './TweetActionIcon';
 
-const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets }) => {
+const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
   const [isLikedScreen, setIsLikedScreen] = useState(isLiked);
   const [numOfLikes, setNumOfLikes] = useState(numLikes);
 
@@ -31,6 +31,8 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets }) => {
           isLikedScreen
             ? setNumOfLikes((n) => n - 1)
             : setNumOfLikes((n) => n + 1);
+          console.log('===>', isLiked, isLikedScreen);
+          putTweet(id, !isLikedScreen).then((res) => console.log(res));
         }}
       >
         <LikeButton isLiked={isLikedScreen} />
@@ -41,6 +43,18 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets }) => {
       </Action>
     </Wrapper>
   );
+};
+
+const putTweet = async (id, isLiked) => {
+  const response = await fetch(`/api/tweet/${id}/like`, {
+    method: 'PUT',
+    mode: 'cors',
+    cache: 'no-cache',
+    headers: { 'Content-Type': 'application/json' },
+    redirect: 'follow',
+    body: JSON.stringify({ like: isLiked }),
+  });
+  return response.json();
 };
 
 const Wrapper = styled.div`

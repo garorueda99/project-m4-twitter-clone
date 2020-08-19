@@ -45,6 +45,7 @@ const TweetDetails = () => {
           <Timestamp>{date}</Timestamp>
           <Divider />
           <ActionBar
+            id={response.tweet.id}
             isLiked={response.tweet.isLiked}
             isReetweeted={response.tweet.isReetweeted}
             numLikes={response.tweet.numLikes}

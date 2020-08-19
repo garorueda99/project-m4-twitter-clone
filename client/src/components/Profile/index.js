@@ -40,6 +40,10 @@ const Profile = () => {
                 status={tweetsToPost.tweetsById[id].status}
                 media={tweetsToPost.tweetsById[id].media[0]}
                 retweetFrom={tweetsToPost.tweetsById[id].retweetFrom}
+                isLiked={tweetsToPost.tweetsById[id].isLiked}
+                isRetweeted={tweetsToPost.tweetsById[id].isRetweeted}
+                numLikes={tweetsToPost.tweetsById[id].numLikes}
+                numRetweets={tweetsToPost.tweetsById[id].numRetweets}
               />
             ))}
         </>
