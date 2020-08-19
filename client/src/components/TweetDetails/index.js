@@ -6,6 +6,7 @@ import ActionBar from '../Tweet/ActionBar';
 import moment from 'moment';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useParams } from 'react-router-dom';
+import Retweeted from '../Tweet/Retweeted';
 
 const TweetDetails = () => {
   const { tweetId } = useParams();
@@ -15,9 +16,14 @@ const TweetDetails = () => {
     fetchTweet(tweetId).then((tweet) => setResponse(tweet));
   }, [tweetId]);
 
-  let date, mediaUrl;
+  let date,
+    mediaUrl,
+    retweetedFrom = undefined;
   if (!!response) {
     date = moment(response.timestamp).format('h:mm A • MMM Do YYYY');
+    if (response.tweet.retweetFrom !== undefined) {
+      retweetedFrom = response.tweet.retweetFrom.displayName;
+    }
     if (response.tweet.media.length > 0) {
       mediaUrl = response.tweet.media[0].url;
       // console.log(mediaUrl);
@@ -33,6 +39,7 @@ const TweetDetails = () => {
       <Divider />
       {!!response && (
         <>
+          <Retweeted from={retweetedFrom} />
           <HeaderDetail
             avatarSrc={response.tweet.author.avatarSrc}
             displayName={response.tweet.author.displayName}

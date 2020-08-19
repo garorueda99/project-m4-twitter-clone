@@ -5,7 +5,7 @@ export const HomeFeedContext = createContext(null);
 export const HomeFeedProvider = ({ children }) => {
   useEffect(() => {
     fetchHomeFeed();
-  });
+  }, []);
 
   const [currentHomeFeed, setCurrentHomeFeed] = useState({});
 
