@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileInfo from './ProfileInfo';
 import Tweet from '../Tweet';
+import TweetHorizontalBar from '../TweetHorizontalBar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -21,7 +23,7 @@ const Profile = () => {
   return (
     <>
       {!!profile && (
-        <>
+        <Router>
           <ProfileWrapper>
             <ProfileHero style={heroStyle}>
               <AvatarImage src={profile.avatarSrc} />
@@ -29,25 +31,30 @@ const Profile = () => {
             <InfoWrapper />
             <ProfileInfo data={profile} />
           </ProfileWrapper>
-          {!!tweetsToPost.tweetIds &&
-            tweetsToPost.tweetIds.map((id, index) => (
-              <Tweet
-                key={index}
-                id={tweetsToPost.tweetsById[id].id}
-                avatarSrc={tweetsToPost.tweetsById[id].author.avatarSrc}
-                displayName={tweetsToPost.tweetsById[id].author.displayName}
-                handle={tweetsToPost.tweetsById[id].author.handle}
-                timestamp={tweetsToPost.tweetsById[id].timestamp}
-                status={tweetsToPost.tweetsById[id].status}
-                media={tweetsToPost.tweetsById[id].media[0]}
-                retweetFrom={tweetsToPost.tweetsById[id].retweetFrom}
-                isLiked={tweetsToPost.tweetsById[id].isLiked}
-                isRetweeted={tweetsToPost.tweetsById[id].isRetweeted}
-                numLikes={tweetsToPost.tweetsById[id].numLikes}
-                numRetweets={tweetsToPost.tweetsById[id].numRetweets}
-              />
-            ))}
-        </>
+          <TweetHorizontalBar />
+          <Switch>
+            <Route path="/">
+              {!!tweetsToPost.tweetIds &&
+                tweetsToPost.tweetIds.map((id, index) => (
+                  <Tweet
+                    key={index}
+                    id={tweetsToPost.tweetsById[id].id}
+                    avatarSrc={tweetsToPost.tweetsById[id].author.avatarSrc}
+                    displayName={tweetsToPost.tweetsById[id].author.displayName}
+                    handle={tweetsToPost.tweetsById[id].author.handle}
+                    timestamp={tweetsToPost.tweetsById[id].timestamp}
+                    status={tweetsToPost.tweetsById[id].status}
+                    media={tweetsToPost.tweetsById[id].media[0]}
+                    retweetFrom={tweetsToPost.tweetsById[id].retweetFrom}
+                    isLiked={tweetsToPost.tweetsById[id].isLiked}
+                    isRetweeted={tweetsToPost.tweetsById[id].isRetweeted}
+                    numLikes={tweetsToPost.tweetsById[id].numLikes}
+                    numRetweets={tweetsToPost.tweetsById[id].numRetweets}
+                  />
+                ))}
+            </Route>
+          </Switch>
+        </Router>
       )}
     </>
   );
