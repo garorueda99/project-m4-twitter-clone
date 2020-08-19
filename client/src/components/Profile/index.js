@@ -12,7 +12,7 @@ const Profile = () => {
   useEffect(() => {
     fetchProfile(profileId).then((profile) => setProfile(profile));
     fetchTweets(profileId).then((dataTweets) => setTweetsToPost(dataTweets));
-  }, []);
+  }, [profileId]);
 
   let heroStyle;
   if (!!profile) {

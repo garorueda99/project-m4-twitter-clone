@@ -27,11 +27,6 @@ const ProfileInfo = ({ data }) => {
 const DataWrapper = styled.div`
   margin-top: 105px;
 `;
-const DisplayName = styled.div`
-  font-weight: bolder;
-  font-size: 1.2rem;
-  margin-bottom: 4px;
-`;
 
 const DisplayHandle = styled.span`
   margin-top: 5px;

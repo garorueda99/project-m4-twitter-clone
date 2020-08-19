@@ -1,4 +1,4 @@
-import React, { useContext, Component } from 'react';
+import React, { useContext } from 'react';
 import Tweet from '../Tweet';
 import TweetDoc from '../TweetDoc';
 import Spinner from '../Spinner';

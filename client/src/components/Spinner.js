@@ -6,7 +6,7 @@ import { COLORS } from '../theme';
 const Spinner = ({ size }) => {
   return (
     <Wrapper>
-      <SpinImg size={size} />
+      <SpinImg size={size} color={COLORS.primary} />
       <div> LOADING...</div>
     </Wrapper>
   );

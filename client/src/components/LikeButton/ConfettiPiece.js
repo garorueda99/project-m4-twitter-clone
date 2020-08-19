@@ -1,17 +1,18 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Particle from './Particle';
+const fadeOut = keyframes`
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  `;
+
+let size = Math.floor(Math.random() * 12);
 
 const ConfettiPiece = ({ angle, distance, color }) => {
-  const size = Math.floor(Math.random() * 12);
-
-  const Circle = styled.div`
-    width: ${size}px;
-    height: ${size}px;
-    border-radius: 50%;
-    opacity: 0;
-    animation: ${fadeOut} 650ms ease-out;
-  `;
   return (
     <CenteredInsideParent>
       <Particle angle={angle} distance={Math.floor(Math.random() * distance)}>
@@ -25,13 +26,12 @@ const ConfettiPiece = ({ angle, distance, color }) => {
   );
 };
 
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+const Circle = styled.div`
+  width: ${size}px;
+  height: ${size}px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: ${fadeOut} 650ms ease-out;
 `;
 
 const CenteredInsideParent = styled.div`

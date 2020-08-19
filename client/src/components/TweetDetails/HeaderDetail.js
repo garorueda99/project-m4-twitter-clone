@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 
 const HeaderDetail = ({ avatarSrc, displayName, handle, timestamp }) => {
-  const date = moment(timestamp).format('MMM Do');
   const history = useHistory();
   return (
     <Wrapper>
@@ -44,11 +42,6 @@ const WrapperContent = styled.div`
   padding: 0px 16px;
 `;
 
-const FirstLine = styled.div`
-  font-size: 15px;
-  display: flex;
-`;
-
 const DisplayName = styled.div`
   line-height: 20px;
   font-weight: bold;
@@ -58,14 +51,6 @@ const DisplayName = styled.div`
 const Username = styled.div`
   line-height: 20px;
   color: rgb(101, 119, 134);
-`;
-
-const Timestamp = styled.div`
-  color: rgb(101, 119, 134);
-  ::before {
-    content: '•';
-    margin: 0 5px;
-  }
 `;
 
 export default HeaderDetail;

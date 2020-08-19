@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import LikeButton from '../LikeButton';
@@ -31,8 +31,7 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
           isLikedScreen
             ? setNumOfLikes((n) => n - 1)
             : setNumOfLikes((n) => n + 1);
-          console.log('===>', isLiked, !isLikedScreen, 'ID', id);
-          putTweet(id, !isLikedScreen).then((res) => console.log(res));
+          putTweet(id, !isLikedScreen).catch((err) => console.log(err));
         }}
       >
         <LikeButton isLiked={isLikedScreen} />
