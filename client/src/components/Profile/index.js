@@ -33,7 +33,7 @@ const Profile = () => {
           </ProfileWrapper>
           <TweetHorizontalBar handle={profileId} />
           <Switch>
-            <Route path="/">
+            <Route path={`/${profileId}`}>
               {!!tweetsToPost.tweetIds &&
                 tweetsToPost.tweetIds.map((id, index) => (
                   <Tweet
