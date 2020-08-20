@@ -1,0 +1,2 @@
+Second Router on profile, cannot make the link to a tweet work without refresh
+Check Retweeted concept 

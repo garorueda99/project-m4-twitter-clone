@@ -24,6 +24,8 @@ const Profile = () => {
     <>
       {!!profile && (
         <Router>
+          {/* <Switch> */}
+          {/* <Route path={`/${profileId}`}> */}
           <ProfileWrapper>
             <ProfileHero style={heroStyle}>
               <AvatarImage src={profile.avatarSrc} />
@@ -32,28 +34,26 @@ const Profile = () => {
             <ProfileInfo data={profile} />
           </ProfileWrapper>
           <TweetHorizontalBar handle={profileId} />
-          <Switch>
-            <Route path={`/${profileId}`}>
-              {!!tweetsToPost.tweetIds &&
-                tweetsToPost.tweetIds.map((id, index) => (
-                  <Tweet
-                    key={index}
-                    id={tweetsToPost.tweetsById[id].id}
-                    avatarSrc={tweetsToPost.tweetsById[id].author.avatarSrc}
-                    displayName={tweetsToPost.tweetsById[id].author.displayName}
-                    handle={tweetsToPost.tweetsById[id].author.handle}
-                    timestamp={tweetsToPost.tweetsById[id].timestamp}
-                    status={tweetsToPost.tweetsById[id].status}
-                    media={tweetsToPost.tweetsById[id].media[0]}
-                    retweetFrom={tweetsToPost.tweetsById[id].retweetFrom}
-                    isLiked={tweetsToPost.tweetsById[id].isLiked}
-                    isRetweeted={tweetsToPost.tweetsById[id].isRetweeted}
-                    numLikes={tweetsToPost.tweetsById[id].numLikes}
-                    numRetweets={tweetsToPost.tweetsById[id].numRetweets}
-                  />
-                ))}
-            </Route>
-          </Switch>
+          {!!tweetsToPost.tweetIds &&
+            tweetsToPost.tweetIds.map((id, index) => (
+              <Tweet
+                key={index}
+                id={tweetsToPost.tweetsById[id].id}
+                avatarSrc={tweetsToPost.tweetsById[id].author.avatarSrc}
+                displayName={tweetsToPost.tweetsById[id].author.displayName}
+                handle={tweetsToPost.tweetsById[id].author.handle}
+                timestamp={tweetsToPost.tweetsById[id].timestamp}
+                status={tweetsToPost.tweetsById[id].status}
+                media={tweetsToPost.tweetsById[id].media[0]}
+                retweetFrom={tweetsToPost.tweetsById[id].retweetFrom}
+                isLiked={tweetsToPost.tweetsById[id].isLiked}
+                isRetweeted={tweetsToPost.tweetsById[id].isRetweeted}
+                numLikes={tweetsToPost.tweetsById[id].numLikes}
+                numRetweets={tweetsToPost.tweetsById[id].numRetweets}
+              />
+            ))}
+          {/* </Route> */}
+          {/* </Switch> */}
         </Router>
       )}
     </>
