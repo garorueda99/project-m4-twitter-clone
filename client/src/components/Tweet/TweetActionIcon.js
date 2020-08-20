@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const PATHS = {
   reply: (
@@ -25,12 +25,14 @@ const PATHS = {
       />
     </g>
   ),
-}
+};
 
 const TweetActionIcon = ({ size = 24, kind, color }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24">
-    {PATHS[kind]}
-  </svg>
-)
+  <div style={{ color: color }}>
+    <svg width={size} height={size} viewBox="0 0 24 24">
+      {PATHS[kind]}
+    </svg>
+  </div>
+);
 
-export default TweetActionIcon
+export default TweetActionIcon;
