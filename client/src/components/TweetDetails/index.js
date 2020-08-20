@@ -54,7 +54,7 @@ const TweetDetails = () => {
           <ActionBar
             id={response.tweet.id}
             isLiked={response.tweet.isLiked}
-            isReetweeted={response.tweet.isReetweeted}
+            isRetweeted={response.tweet.isRetweeted}
             numLikes={response.tweet.numLikes}
             numRetweets={response.tweet.numRetweets}
           />

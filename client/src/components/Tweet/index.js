@@ -41,7 +41,7 @@ const Tweet = (props) => {
       <ActionBar
         id={props.id}
         isLiked={props.isLiked}
-        isReetweeted={props.isReetweeted}
+        isRetweeted={props.isRetweeted}
         numLikes={props.numLikes}
         numRetweets={props.numRetweets}
       />
