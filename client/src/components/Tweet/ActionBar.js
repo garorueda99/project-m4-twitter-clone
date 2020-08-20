@@ -8,6 +8,7 @@ import TweetActionIcon from './TweetActionIcon';
 const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
   const [isLikedScreen, setIsLikedScreen] = useState(isLiked);
   const [numOfLikes, setNumOfLikes] = useState(numLikes);
+  const [numOfRetweets, setNumOfRetweets] = useState(numRetweets);
 
   return (
     <Wrapper>
@@ -22,6 +23,7 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
         // }
       >
         <TweetActionIcon kind="retweet" color={'rgb(23, 191, 99)'} />
+        <LikesCount>{numOfRetweets > 0 && numOfRetweets}</LikesCount>
       </Action>
       <Action
         color="rgb(224, 36, 94)"

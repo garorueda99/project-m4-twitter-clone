@@ -36,7 +36,7 @@ function App() {
                 <Route path="/notifications">
                   <Notifications />
                 </Route>
-                <Route path="/tweet/:tweetId">
+                <Route exact path="/tweet/:tweetId">
                   <TweetDetails />
                 </Route>
                 <Route path="/:profileId">

@@ -12,12 +12,12 @@ const TweetHorizontalBar = ({ handle }) => {
           </NavigationLink>
         </Li>
         <Li tabIndex="0">
-          <NavigationLink exact to={`/Media`}>
+          <NavigationLink exact to={`/${handle}/media`}>
             <H2>Media</H2>
           </NavigationLink>
         </Li>
         <Li tabIndex="0">
-          <NavigationLink exact to="/likes">
+          <NavigationLink exact to={`/${handle}/likes`}>
             <H2>Likes</H2>
           </NavigationLink>
         </Li>

@@ -23,7 +23,8 @@ const Profile = () => {
   return (
     <>
       {!!profile && (
-        <Router>
+        // <Router>
+        <>
           <ProfileWrapper>
             <ProfileHero style={heroStyle}>
               <AvatarImage src={profile.avatarSrc} />
@@ -33,7 +34,7 @@ const Profile = () => {
           </ProfileWrapper>
           <TweetHorizontalBar handle={profileId} />
           <Switch>
-            <Route path={`/${profileId}`}>
+            <Route exact path={`/:profileId`}>
               {!!tweetsToPost.tweetIds &&
                 tweetsToPost.tweetIds.map((id, index) => (
                   <Tweet
@@ -53,8 +54,17 @@ const Profile = () => {
                   />
                 ))}
             </Route>
+            <Route exact path={`/:profileId/media`}>
+              {' '}
+              Media page{' '}
+            </Route>
+            <Route exact path={`/:profileId/likes`}>
+              {' '}
+              Likes page{' '}
+            </Route>
           </Switch>
-        </Router>
+          {/* // </Router> */}
+        </>
       )}
     </>
   );
