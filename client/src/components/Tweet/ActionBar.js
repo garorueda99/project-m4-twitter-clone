@@ -9,10 +9,7 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
   const [isLikedScreen, setIsLikedScreen] = useState(isLiked);
   const [numOfLikes, setNumOfLikes] = useState(numLikes);
   const [numOfRetweets, setNumOfRetweets] = useState(numRetweets);
-<<<<<<< HEAD
-=======
 
->>>>>>> ba5030f9876d312111b275b780770b53c80fe592
   return (
     <Wrapper>
       <Action color="rgb(27, 149, 224)" size={40}>
@@ -25,16 +22,11 @@ const ActionBar = ({ isLiked, isRetweeted, numLikes, numRetweets, id }) => {
         //  ;
         //         }}
       >
-<<<<<<< HEAD
-        <TweetActionIcon kind="retweet" color={'rgb(23, 191, 99)'} />
-        <LikesCount>{numOfRetweets > 0 && numOfRetweets}</LikesCount>
-=======
         <TweetActionIcon
           kind="retweet"
           color={isRetweeted ? 'rgb(23, 191, 99)' : ''}
         />
         <Count>{numOfRetweets > 0 && numOfRetweets}</Count>
->>>>>>> ba5030f9876d312111b275b780770b53c80fe592
       </Action>
       <Action
         color="rgb(224, 36, 94)"
