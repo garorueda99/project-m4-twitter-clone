@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo';
 import Tweet from '../Tweet';
 import TweetHorizontalBar from '../TweetHorizontalBar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { COLORS } from '../../theme';
 const Profile = () => {
   const { profileId } = useParams();
   const [profile, setProfile] = useState(undefined);
@@ -28,6 +28,7 @@ const Profile = () => {
           <ProfileWrapper>
             <ProfileHero style={heroStyle}>
               <AvatarImage src={profile.avatarSrc} />
+              <FollowButton>Follow</FollowButton>
             </ProfileHero>
             <InfoWrapper />
             <ProfileInfo data={profile} />
@@ -126,6 +127,30 @@ const AvatarImage = styled.img`
   position: absolute;
   top: 175px;
   left: 10px;
+`;
+
+const FollowButton = styled.button`
+  position: absolute;
+  top: 275px;
+  right: 10px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  background: white;
+  border: 1px solid ${COLORS.primary};
+  color: ${COLORS.primary};
+  border-radius: 2em;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  z-index: 1;
+  outline: none;
+  font-weight: bolder;
+  width: 150px;
+  &:hover {
+    background-color: ${COLORS.line};
+  }
 `;
 
 const InfoWrapper = styled.div``;
