@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import ProfileInfo from './ProfileInfo';
 import Tweet from '../Tweet';
 import TweetHorizontalBar from '../TweetHorizontalBar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { COLORS } from '../../theme';
+
 const Profile = () => {
   const { profileId } = useParams();
   const [profile, setProfile] = useState(undefined);
