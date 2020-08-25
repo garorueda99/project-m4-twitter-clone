@@ -52,6 +52,7 @@ const Nav = styled.main`
   height: 100vh;
   padding: 32px 20px;
   padding-bottom: 32px;
+  position: fixed;
 `;
 
 const Logo = styled.img`

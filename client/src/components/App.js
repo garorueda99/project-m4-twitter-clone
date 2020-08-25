@@ -62,11 +62,15 @@ const Main = styled.main`
 `;
 
 const TweetScreen = styled.main`
+  position: relative;
   display: flex;
   width: 900px;
 `;
 
 const ContentWrapper = styled.header`
+  position: relative;
+  max-width: 650px;
+  left: 220px;
   display: flex;
   flex-direction: column;
   flex: 1;
