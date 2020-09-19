@@ -1,10 +1,7 @@
 /**
   Endpoints related to profile information and user details
 */
-const lodash = require('lodash');
 const router = require('express').Router();
-
-const data = require('../data');
 
 const {
   CURRENT_USER_HANDLE,
